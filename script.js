@@ -4,7 +4,6 @@ const goods = [
     { title: 'Jacket', price: 350 },
     { title: 'Shoes', price: 250 },
 ];
-
 const renderGoodsItem = ({ title = x, price = 0 }) =>
     `<div class="goods-item">
     <img class="goods__photo" src="img/error.png" alt="photo">
@@ -22,3 +21,4 @@ const renderGoodsList = () => {
     document.querySelector('.goods-list').innerHTML = goodsList;
 }
 onload = () => { renderGoodsList() }
+//изменить картинки
