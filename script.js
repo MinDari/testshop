@@ -5,18 +5,52 @@ const goods = [
     { title: 'Shoes', price: 250 },
 ];
 
-const renderGoodsItem = ({ title, price }) => (
-    `<div class="goods-item">
-        <img class="goods__photo" src="img/err.png" alt="photo">
-            <h3>${title}</h3>
-            <p>${price}</p>
-            <button class="goods__button" type="button">Добавить</button>
-    </div>`
-)
-const renderGoodsList = () => {
-    let goodsList = goods.map((item) => renderGoodsItem(item));
-    goodsList = goodsList.join("");
 
-    document.querySelector('.goods-list').innerHTML = goodsList;
+class GoodsItem {
+    constructor({ title, price }) {
+        this.title = title;
+        this.price = price;
+    }
+    render() {
+        return `<div class="goods-item">
+           <img class="goods__photo" src="img/err.png" alt="photo">
+            <h3>${this.title}</h3>
+            <p>${this.price}</p>
+            <button class="goods__button" type="button">Добавить</button>
+        </div>`;
+    }
+
 }
-onload = () => { renderGoodsList() }
+class GoodsList {
+    constructor() {
+        this.goods = goods;
+    }
+    goodsSum() {
+        return this.goods.reduce((prev, { price }) => prev + price, 0);
+    }
+    render() {
+        const _goods = [... this.goods];
+
+        const _goodsItem = _goods.map((item) => {
+            const goodsItem = new GoodsItem(item);
+            return goodsItem.render();
+        })
+        document.querySelector('.goods-list').innerHTML = _goodsItem.join('');
+    }
+}
+class Basket {
+    setVision() { }
+    render() { }
+}
+class BasketItem {
+    setCont() { }
+    deleteItem() { }
+    render() { }
+}
+
+
+
+onload = () => {
+    const goodsList = new GoodsList();
+    goodsList.render();
+}
