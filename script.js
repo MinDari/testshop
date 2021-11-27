@@ -13,7 +13,7 @@ class GoodsItem {
     }
     render() {
         return `<div class="goods-item">
-       <img class="goods__photo" src="img/err.png" alt="photo">
+       <img class="goods__photo" src="img/error.png" alt="photo">
         <h3>${this.title}</h3>
         <p>${this.price}</p>
         <button class="goods__button" type="button">Добавить</button>
